@@ -1,4 +1,5 @@
-import pygame
+from pygame.sprite import Sprite
+from pygame.image import load
 
 
 class Settings():
@@ -30,9 +31,9 @@ class Settings():
         self.alien_points = int(self.alien_points * self.score_scale)
 
 
-class Background(pygame.sprite.Sprite):
+class Background(Sprite):
     def __init__(self, image_file, location):
-        pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load(image_file)
+        Sprite.__init__(self)
+        self.image = load(image_file)
         self.rect = self.image.get_rect()
         self.rect.left, self.rect.top = location
