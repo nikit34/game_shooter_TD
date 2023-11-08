@@ -1,7 +1,7 @@
 import pygame.font
 from pygame.sprite import Sprite
 from pygame.sprite import Group
-from ship import Ship
+from weapon import Weapon
 
 
 class Scoreboard():
@@ -15,7 +15,7 @@ class Scoreboard():
         self.prep_score()
         self.prep_high_score()
         self.prep_level()
-        self.prep_ships()
+        self.prep_weapons()
 
     def prep_score(self):
         rounded_score = int(round(self.stats.score, -1))
@@ -37,7 +37,7 @@ class Scoreboard():
         self.screen.blit(self.score_image, self.score_rect)
         self.screen.blit(self.high_score_image, self.high_score_rect)
         self.screen.blit(self.level_image, self.level_rect)
-        self.ships.draw(self.screen)
+        self.weapons.draw(self.screen)
 
     def prep_level(self):
         self.level_image = self.font.render(str(self.stats.level), True, self.text_color, self.ai_settings.bg_color)
@@ -45,10 +45,10 @@ class Scoreboard():
         self.level_rect.right = self.score_rect.right
         self.level_rect.top = self.level_rect.bottom + 10
 
-    def prep_ships(self):
-        self.ships = Group()
-        for ship_number in range(self.stats.ships_left):
-            ship = Ship(self.ai_settings, self.screen)
-            ship.rect.x = 10 + ship_number * ship.rect.width
-            ship.rect.y = 10
-            self.ships.add(ship)
+    def prep_weapons(self):
+        self.weapons = Group()
+        for weapon_number in range(self.stats.weapons_left):
+            weapon = Weapon(self.ai_settings, self.screen)
+            weapon.rect.x = 10 + weapon_number * weapon.rect.width
+            weapon.rect.y = 10
+            self.weapons.add(weapon)
