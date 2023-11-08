@@ -14,22 +14,22 @@ def run_game():
     ai_settings = Settings()
 
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
-    pygame.display.set_caption("Alien Invasion")
+    pygame.display.set_caption("Tank Invasion")
     play_button = Button(ai_settings, screen, "Play")
     stats = GameStats(ai_settings)
     sb = Scoreboard(ai_settings, screen, stats)
     weapon = Weapon(ai_settings, screen)
     BG = Background("images/fon.png", [0, 0])
     bullets = Group()
-    aliens = Group()
-    gf.create_fleet(ai_settings, screen, weapon, aliens)
+    tanks = Group()
+    gf.create_fleet(ai_settings, screen, weapon, tanks)
 
     while True:
-        gf.check_events(ai_settings, screen, stats, sb, play_button, weapon, aliens, bullets)
+        gf.check_events(ai_settings, screen, stats, sb, play_button, weapon, tanks, bullets)
         if stats.game_active:
             weapon.update()
-            gf.update_bullets(ai_settings, screen, stats, sb, weapon, aliens, bullets)
-            gf.update_aliens(ai_settings, screen, stats, sb, weapon, aliens, bullets)
-        gf.update_screen(ai_settings, screen, stats, sb, weapon, aliens, bullets, play_button, BG)
+            gf.update_bullets(ai_settings, screen, stats, sb, weapon, tanks, bullets)
+            gf.update_tanks(ai_settings, screen, stats, sb, weapon, tanks, bullets)
+        gf.update_screen(ai_settings, screen, stats, sb, weapon, tanks, bullets, play_button, BG)
 
 run_game()

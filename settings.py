@@ -20,15 +20,15 @@ class Settings():
     def initialize_dynamic_settings(self):
         self.weapon_speed_factor = 10
         self.bullet_speed_factor = 15
-        self.alien_speed_factor = 5
+        self.tank_speed_factor = 5
         self.fleet_direction = 1  # -1 -move left    1 -move right
-        self.alien_points = 50
+        self.tank_points = 50
 
     def increase_speed(self):
         self.weapon_speed_factor *= self.speedup_scale
         self.bullet_speed_factor *= self.speedup_scale
-        self.alien_speed_factor *= self.speedup_scale
-        self.alien_points = int(self.alien_points * self.score_scale)
+        self.tank_speed_factor *= self.speedup_scale
+        self.tank_points = int(self.tank_points * self.score_scale)
 
 
 class Background(Sprite):
